@@ -14,7 +14,7 @@ class HashNode<K,V> {
 class HashMapTest<K,V> {
 
     ArrayList<HashNode<K, V>> bucket = new ArrayList<>();
-    int numBuckets=10;
+    int numBuckets=8;
     int size;
     public HashMapTest()
     {

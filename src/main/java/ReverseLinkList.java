@@ -17,9 +17,10 @@ public class ReverseLinkList {
       //  LinkList.reverselist(list);
        // System.out.print("\n");
         //LinkList.printList(list);
-        LinkList.deleteNode(list,5);
-        LinkList.deleteNode(list,8);
+       // LinkList.deleteNode(list,5);
+       // LinkList.deleteNode(list,8);
         System.out.print("\n");
+        LinkList.reverseListRecursion(list);
         LinkList.printList(list);
     }
 }
@@ -82,6 +83,23 @@ class LinkList<D> {
             current = nextNode;
         }
         list.head = prev;
+    }
+
+    public static void reverseListRecursion(LinkList list){
+        LinkNode head = list.head;
+
+        LinkNode reverseHead = reverse(head);
+        list.head = reverseHead;
+    }
+    public static LinkNode reverse(LinkNode head){
+        System.out.println("head : " + head.data);
+        if(head == null || head.next == null)
+                return head;
+
+        LinkNode current = reverse(head.next);
+        head.next.next = head;
+        head.next=null;
+        return current;
     }
 
    public static void printList(LinkList list) {

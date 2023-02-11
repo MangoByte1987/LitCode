@@ -1,5 +1,7 @@
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.concurrent.ForkJoinPool;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.IntPredicate;
@@ -13,7 +15,28 @@ public class Test {
     public static void main(String args[]) {
         System.out.println("hello mac !!");
 
-        List<String> sampleList = Arrays.asList("java", "kotlin");
+
+        int[] num = { 3, 5, 2, 4, 1 };
+        int size = num.length;
+        // 8,6,7,9,0,2,1,12,89
+        int d = 6;
+
+        int appIndex = d % size;
+        System.out.println("appIndex: " + appIndex);
+        int appId = num[appIndex];
+
+        for (int i = appIndex; i > 0; i--) {
+            num[i] = num[i - 1];
+        }
+        num[0] = appId;
+
+        ForkJoinPool pool = new ForkJoinPool(4);
+        System.out.println(1000 ^ 2000);
+        for (int i = 0; i < num.length; i++) {
+            System.out.print(" " + num[i]);
+        }
+
+       /* List<String> sampleList = Arrays.asList("java", "kotlin");
 
         String resultString = sampleList.stream()
                 .map((var x) -> x.toUpperCase())
@@ -89,7 +112,7 @@ public class Test {
         printSubarrays(arr,0,0);
 
         ConcurrentHashMap <String,Integer> chm = new ConcurrentHashMap<>();
-
+*/
     }
 
     private static void printBinaryNumQueue(int n ){
